@@ -52,12 +52,6 @@ then
 	domain="$old_domain"
 	path_url="$new_path"
 
-	# Update custom error file path if needed
-	if [ $custom_error_file -eq 1 ]
-	then
-		ynh_add_config --template="nginx-code-error.conf" --destination="$nginx_extra_conf_dir/error-code.conf"
-	fi
-
 	# Create a dedicated NGINX config
 	ynh_add_nginx_config
 fi
@@ -83,10 +77,6 @@ then
 	if [ $phpversion != "none" ]
 	then
 		ynh_store_file_checksum --file="/etc/nginx/conf.d/$new_domain.d/$app.d/php.conf"
-	fi
-	if [ $custom_error_file -eq 1 ]
-	then
-		ynh_store_file_checksum --file="/etc/nginx/conf.d/$new_domain.d/$app.d/error-code.conf"
 	fi
 fi
 

@@ -41,12 +41,7 @@ fi
 #=================================================
 ynh_script_progression --message="Recreating the dedicated system user..." --weight=2
 
-if [ $with_sftp -eq 1 ]
-then
-    groups="sftp.app"
-else
-    groups=""
-fi
+groups="sftp.app"
 
 ynh_system_user_create --username=$app --home_dir="$install_dir" --groups="$groups"
 
@@ -68,8 +63,8 @@ chown -R $app:www-data "$install_dir"
 # Home directory of the user needs to be owned by root to allow
 # SFTP connections
 chown root:root "$install_dir"
-setfacl -m g:$app:r-x "$install_dir"
-setfacl -m g:www-data:r-x "$install_dir"
+setfacl -m g:$app:rwx "$install_dir"
+setfacl -m g:www-data:rwx "$install_dir"
 chmod 750 "$install_dir"
 
 #=================================================

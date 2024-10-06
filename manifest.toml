@@ -11,7 +11,7 @@ maintainers = []
 
 [upstream]
 license = "GPL-3.0-only"
-code = "https://github.com/YunoHost-Apps/my_webapp_ynh"
+code = "https://github.com/joby-lol/my_webapp_ynh"
 
 [integration]
 yunohost = ">= 11.2.4"
@@ -30,12 +30,6 @@ ram.runtime = "50M"
     [install.path]
     type = "path"
     default = "/site"
-
-    [install.with_sftp]
-    ask.en = "Do you need a SFTP access?"
-    ask.fr = "Avez-vous besoin d'un accès SFTP ?"
-    type = "boolean"
-    default = true
 
     [install.password]
     type = "password"
@@ -58,12 +52,6 @@ ram.runtime = "50M"
     type = "select"
     choices = [ "none", "mysql", "postgresql" ]
     default = "none"
-
-    [install.custom_error_file]
-    ask = "Activate the custom error file use"
-    type = "boolean"
-    default = false
-    help = "Once custom error enabled, you can add/create a custom `404.html` file in a directory `www/error`."
 
 [resources]
     [resources.system_user]
