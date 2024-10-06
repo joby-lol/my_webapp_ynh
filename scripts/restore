@@ -63,6 +63,7 @@ chown -R $app:www-data "$install_dir"
 # Home directory of the user needs to be owned by root to allow
 # SFTP connections
 chown root:root "$install_dir"
+setfacl -m m:rwx "$install_dir"
 setfacl -m g:$app:rwx "$install_dir"
 setfacl -m g:www-data:rwx "$install_dir"
 chmod 750 "$install_dir"
